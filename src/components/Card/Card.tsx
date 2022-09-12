@@ -1,28 +1,26 @@
 import React, { FunctionComponent } from "react";
 import { ReactNode } from "react";
-import { StyleProp, TextStyle } from "react-native";
+import { StyleProp, ViewStyle } from "react-native";
 import styled from "styled-components/native";
 import SmallText from "../Texts/SmallText";
 import image from "../../assets/image/imagem2.png";
 import { colors } from "../colors";
+import { ScreenWidth } from "../shared";
+
 interface CardProps {
-  textStyles?: StyleProp<TextStyle>;
+  textStyles?: StyleProp<ViewStyle>;
 }
 
 const Container = styled.View`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width:328px;
+  height: 434px;
   padding: 16px;
-  gap: 8px;
- 
+  border-color: black;
   shadow-color: black;
   shadow-opacity: 0.26;
   shadow-offset: { width: 0, height: 2 };
-  shadow-radius: 10;
-  elevation: 3;
-  border-color: ${colors.black};
+
+  border-radius: 10px;
 `;
 const Image = styled.Image`
   width: 100%;
