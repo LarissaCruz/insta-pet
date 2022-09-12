@@ -1,12 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import style from 'styled-component\native;
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { useFonts } from "expo-font";
+import TabNavigation from "./src/navigatiors/TabNavigation";
 
+export default function App() {
+  let [fontsLoaded] = useFonts({
+    "Nunito-Regular": require("./src/assets/fonts/Nunito-Regular.ttf"),
+    "Pacifico-Regular": require("./src/assets/fonts/Pacifico-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+  return <TabNavigation />;
+}
