@@ -9,6 +9,8 @@ import { Octicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { View } from "react-native";
+import Publish from "../screens/Publish";
+import Contact from "../screens/Contact";
 
 export type RootStackParamList = {
   RootStack: any;
@@ -19,14 +21,16 @@ export type RootStackParamList = {
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const IconTabRound = styled.View`
-  width: 48;
-  height: 48;
-  border-radius: 40;
-  margin-bottom: 20;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-bottom: 20px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: ${colors.secondary};
+  box-shadow: 2px 2px 4px rgb(30, 30, 30, 0.25);
+  elevation: 1;
 `;
 
 const TabNavigation: FunctionComponent = () => {
@@ -35,25 +39,45 @@ const TabNavigation: FunctionComponent = () => {
       <Tab.Navigator
         screenOptions={{
           tabBarShowLabel: false,
+          headerStyle: {
+            backgroundColor: colors.primary,
+            borderBottomWidth: 0,
+            shadowColor: "transparent",
+            shadowOpacity: 0,
+            elevation: 0,
+            height: 120,
+          },
+          headerTitle: (props) => <BigText>Instapet</BigText>,
+          headerTintColor: colors.black,
+          headerTitleAlign: "center",
         }}
+        initialRouteName="RootStack"
       >
         <Tab.Screen
           name="RootStack"
           component={RootStack}
           options={{
-            headerShown: false,
-            tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
+            tabBarIcon: ({ focused }) => (
+              <Entypo
+                name="home"
+                size={24}
+                color={focused ? "rgba(192, 150, 242, 1)" : "black"}
+              />
+            ),
           }}
         />
         <Tab.Screen
           name="Circles"
-          component={RootStack}
+          component={Publish}
           options={{
-            headerShown: false,
-            tabBarIcon: () => (
+            tabBarIcon: ({ focused }) => (
               <View>
                 <IconTabRound>
-                  <Octicons name="plus" size={20} color={colors.black} />
+                  <Octicons
+                    name="plus"
+                    size={28}
+                    color={focused ? "white" : "black"}
+                  />
                 </IconTabRound>
               </View>
             ),
@@ -61,11 +85,14 @@ const TabNavigation: FunctionComponent = () => {
         />
         <Tab.Screen
           name="Contacts"
-          component={RootStack}
+          component={Contact}
           options={{
-            headerShown: false,
-            tabBarIcon: () => (
-              <FontAwesome name="user" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <FontAwesome
+                name="user"
+                size={24}
+                color={focused ? "rgba(192, 150, 242, 1)" : "black"}
+              />
             ),
           }}
         />

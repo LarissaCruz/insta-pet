@@ -13,27 +13,12 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 const RootStack: FunctionComponent = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: colors.primary,
-          borderBottomWidth: 0,
-          shadowColor: "transparent",
-          shadowOpacity: 0,
-          elevation: 0,
-          height: 100,
-        },
-
-        headerTintColor: colors.black,
-        headerTitleAlign: "center",
-      }}
-      initialRouteName="Home"
-    >
+    <Stack.Navigator>
       <Stack.Screen
         name="Home"
         component={Home}
         options={{
-          headerTitle: (props) => <BigText>Instapet</BigText>,
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
