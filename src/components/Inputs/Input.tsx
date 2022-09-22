@@ -6,16 +6,17 @@ import { colors } from "../colors";
 import SmallText from "../Texts/SmallText";
 
 interface InputProps {
-  children: ReactNode;
-  InputStyles: StyleProp<ViewStyle>;
-  multiline: boolean;
+  children?: ReactNode;
+  InputStyles?: StyleProp<ViewStyle>;
+  multiline?: boolean;
+  label: string;
+  placeholder: string;
 }
 const Container = styled.TextInput`
   padding: 12px 24px;
   color: ${colors.black};
   border-radius: 8px;
   flex-direction: row;
-  aling-items: flex-start;
   background: ${colors.white};
   border: 1px solid #353535;
   border-radius: 8px;
@@ -25,11 +26,11 @@ const Container = styled.TextInput`
 const Input: FunctionComponent<InputProps> = (props) => {
   return (
     <>
-      <SmallText>Email</SmallText>
+      <SmallText textStyles={{ marginVertical: 8 }}>{props.label}</SmallText>
       <Container
         multiline={props.multiline}
-        numberOfLines={props.multiline ? 4 : 1}
-        placeholder="useless placeholder"
+        numberOfLines={props.multiline ? 6 : 1}
+        placeholder={props.placeholder}
       >
         {props.children}
       </Container>

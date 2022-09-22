@@ -14,14 +14,11 @@ interface ChipProps {
 }
 
 const Container = styled.View`
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px 8px 0px 0px;
-  border-radius: 16px
-  background: ${colors.primary}
-  gap:8px;
-  
+  border-radius: 16px;
+  background: ${colors.primary};
+  padding-right: 10px;
 `;
 
 const Chip: FunctionComponent<ChipProps> = (props) => {

@@ -5,8 +5,9 @@ import { TextProps } from "./types";
 
 const StyledText = styled.Text`
   font-size: 16px;
-  color: ${colors.gray};
+  color: ${colors.black};
   text-align: left;
+  flex-direction: row;
   font-family: Nunito-Regular;
 `;
 

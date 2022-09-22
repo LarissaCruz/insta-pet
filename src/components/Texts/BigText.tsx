@@ -6,7 +6,7 @@ import { TextProps } from "./types";
 const StyledText = styled.Text`
   font-size: 30px;
   color: ${colors.black};
-  text-align: center;
+
   font-family: Pacifico-Regular;
 `;
 
