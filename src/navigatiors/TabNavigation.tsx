@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import RootStack from "./RootStack";
 import { colors } from "../components/colors";
 import BigText from "../components/Texts/BigText";
 import styled from "styled-components/native";
@@ -11,9 +9,10 @@ import { FontAwesome } from "@expo/vector-icons";
 import { View } from "react-native";
 import Publish from "../screens/Publish";
 import Contact from "../screens/Contact";
+import Home from "../screens/Home";
 
 export type RootStackParamList = {
-  RootStack: any;
+  Home: any;
   Circles: any;
   Contacts: any;
 };
@@ -35,27 +34,19 @@ const IconTabRound = styled.View`
 
 const TabNavigation: FunctionComponent = () => {
   return (
-    <NavigationContainer>
       <Tab.Navigator
-        screenOptions={{
-          tabBarShowLabel: false,
-          headerStyle: {
+       screenOptions={{
+         tabBarShowLabel: false,
+         headerStyle: {
             backgroundColor: colors.primary,
-            borderBottomWidth: 0,
-            shadowColor: "transparent",
-            shadowOpacity: 0,
-            elevation: 0,
-            height: 120,
           },
-          headerTitle: (props) => <BigText>Instapet</BigText>,
           headerTintColor: colors.black,
-          headerTitleAlign: "center",
-        }}
-        initialRouteName="RootStack"
+       }}
+       initialRouteName="Home"
       >
         <Tab.Screen
-          name="RootStack"
-          component={RootStack}
+          name="Home"
+          component={Home}
           options={{
             tabBarIcon: ({ focused }) => (
               <Entypo
@@ -97,7 +88,6 @@ const TabNavigation: FunctionComponent = () => {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 
