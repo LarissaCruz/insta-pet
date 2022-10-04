@@ -25,7 +25,6 @@ const Contact: FunctionComponent = () => {
         <Button styles={{ padding: 8 }}>
           <MaterialIcons name="edit" size={14} color="white" />
           <SmallText textStyles={{ color: "white", fontSize: 12 }}>
-            {" "}
             Editar perfil
           </SmallText>
         </Button>

@@ -1,5 +1,7 @@
 import { useFonts } from "expo-font";
-import TabNavigation from "./src/navigatiors/TabNavigation";
+import AuthStackNavigator from "./src/navigatiors/AuthStackNavigator";
+import MainStackNavigator from "./src/navigatiors/MainStackNavigator";
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -10,5 +12,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return <TabNavigation />;
+  return <MainStackNavigator />;
 }

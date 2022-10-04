@@ -37,10 +37,12 @@ const TabNavigation: FunctionComponent = () => {
       <Tab.Navigator
        screenOptions={{
          tabBarShowLabel: false,
+        
          headerStyle: {
             backgroundColor: colors.primary,
           },
           headerTintColor: colors.black,
+          
        }}
        initialRouteName="Home"
       >
