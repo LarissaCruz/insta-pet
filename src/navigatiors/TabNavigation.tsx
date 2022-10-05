@@ -38,6 +38,7 @@ const TabNavigation: FunctionComponent = () => {
        screenOptions={{
          tabBarShowLabel: false,
           headerTintColor: colors.black,
+          headerShown: false,
        }}
        initialRouteName="Home"
       >

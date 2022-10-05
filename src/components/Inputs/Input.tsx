@@ -12,7 +12,9 @@ interface InputProps {
   label: string;
   placeholder: string;
 }
-const Container = styled.TextInput`
+const Container = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
   padding: 12px 24px;
   color: ${colors.black};
   border-radius: 8px;
@@ -22,16 +24,20 @@ const Container = styled.TextInput`
   border-radius: 8px;
   gap: 10px;
 `;
+const ContainerInput = styled.TextInput`
+  
+`;
 
 const Input: FunctionComponent<InputProps> = (props) => {
   return (
     <>
       <SmallText textStyles={{ marginVertical: 8 }}>{props.label}</SmallText>
-      <Container
-        multiline={props.multiline}
-        numberOfLines={props.multiline ? 6 : 1}
-        placeholder={props.placeholder}
-      >
+      <Container >
+        <ContainerInput
+          multiline={props.multiline}
+          numberOfLines={props.multiline ? 6 : 1}
+          placeholder={props.placeholder}
+        />
         {props.children}
       </Container>
     </>

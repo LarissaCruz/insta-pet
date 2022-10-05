@@ -7,4 +7,5 @@ export const colors = {
   tertiary: "#85c6d8",
   gray: "#d1d5db",
   lightGray: "#d2d2d2",
+  lightPurple: "#A569ED",
 };
