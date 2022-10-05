@@ -26,8 +26,8 @@ const ImageComponent = styled.Image`
   heigth: 194px;
 `;
 const ContainerSection = styled.View`
-  height: 50;
-  margin-top: 20;
+  height: 50px;
+  margin-top: 20px;
   justify-content: center; 
   align-items: center; 
 `;
@@ -35,9 +35,9 @@ const Divider = styled.View`
   background-color:${colors.lightGray}; 
   position: absolute; 
   width: 100%; 
-  height: 1;
+  height: 1px;
 `;
-const Container = styled.View`
+const ContainerLabel = styled.View`
   background-color: ${colors.white};
   padding: 16px;
 `;
@@ -67,12 +67,12 @@ const Login: FunctionComponent = () => {
         </SmallText>
       </Button>
       <ContainerSection>
-        <Divider> </Divider>
-        <Container>
-          <SmallText >Ou</SmallText>
-        </Container>
+        <Divider></Divider>
+        <ContainerLabel>
+          <SmallText>Ou</SmallText>
+        </ContainerLabel>
       </ContainerSection>
-      <Button styles={{ marginTop: 20, backgroundColor: "white" ,}}>
+      <Button styles={{ marginTop: 20, backgroundColor: "white" }}>
         <SmallText textStyles={{ fontWeight: "bold" }}>Cadastrar</SmallText>
       </Button>
     </HomeContainer>
