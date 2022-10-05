@@ -12,5 +12,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return <MainStackNavigator />;
+  return <AuthStackNavigator />;
 }

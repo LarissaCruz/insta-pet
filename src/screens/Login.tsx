@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 import { Container } from "../components/shared";
 import { colors } from "../components/colors";
 import Card from "../components/Card/Card";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import SmallText from "../components/Texts/SmallText";
 import BigText from "../components/Texts/BigText";
 import Avatar from "../components/Avatar/Avatar";
@@ -22,9 +22,26 @@ const HomeContainer = styled(Container)`
   padding: 16px;
 `;
 const ImageComponent = styled.Image`
-  width: 194;
-  heigth: 194;
+  width: 194px;
+  heigth: 194px;
 `;
+const ContainerSection = styled.View`
+  height: 50;
+  margin-top: 20;
+  justify-content: center; 
+  align-items: center; 
+`;
+const Divider = styled.View`
+  background-color:${colors.lightGray}; 
+  position: absolute; 
+  width: 100%; 
+  height: 1;
+`;
+const Container = styled.View`
+  background-color: ${colors.white};
+  padding: 16px;
+`;
+
 const Login: FunctionComponent = () => {
   return (
     <HomeContainer>
@@ -49,7 +66,13 @@ const Login: FunctionComponent = () => {
           Entrar
         </SmallText>
       </Button>
-      <Button styles={{ marginTop: 20, backgroundColor: "white" }}>
+      <ContainerSection>
+        <Divider> </Divider>
+        <Container>
+          <SmallText >Ou</SmallText>
+        </Container>
+      </ContainerSection>
+      <Button styles={{ marginTop: 20, backgroundColor: "white" ,}}>
         <SmallText textStyles={{ fontWeight: "bold" }}>Cadastrar</SmallText>
       </Button>
     </HomeContainer>

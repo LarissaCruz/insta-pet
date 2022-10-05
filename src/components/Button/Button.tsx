@@ -14,7 +14,7 @@ const Container = styled.TouchableOpacity`
   padding: 16px;
   background: ${colors.black};
   color: ${colors.white};
-  box-shadow: 2px 2px 4px rgb(30, 30, 30, 0.25);
+  box-shadow: 0px 4px 16px rgba(30, 30, 30, 0.75);
   border-radius: 8px;
   elevation: 1;
 `;
