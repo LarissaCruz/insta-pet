@@ -4,15 +4,16 @@ import { Container } from "../components/shared";
 import { colors } from "../components/colors";
 import SmallText from "../components/Texts/SmallText";
 import BigText from "../components/Texts/BigText";
+import ContainerImage from "../components/ContainerImage/ContainerImage";
 import Button from "../components/Button/Button";
 import { AlignCenter } from "../components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
 import imageWelcome from "../assets/image/imageWelcome.png";
 import Input from "../components/Inputs/Input";
 import { AntDesign } from "@expo/vector-icons";
-import {StackNavigationProp} from '@react-navigation/stack';
-import {AuthStackParamList} from "../navigatior/AuthStackNavigator"
 import {useNavigation} from '@react-navigation/native';
+import {AuthStackParamList} from "../navigatior/AuthStackNavigator"
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const HomeContainer = styled(Container)`
   background-color: ${colors.white};
@@ -23,6 +24,7 @@ const ImageComponent = styled.Image`
   width: 194px;
   heigth: 194px;
   margin-top: 40px;
+
 `;
 
 const ContainerSection = styled.View`
@@ -44,26 +46,33 @@ const ContainerLabel = styled.View`
   padding: 16px;
 `;
 
+type AuthScreenProp = StackNavigationProp<AuthStackParamList, 'Login', 'Register'>;
 
+const Register: FunctionComponent = () => {
+  const navigation = useNavigation<AuthScreenProp>();
 
-const Login: FunctionComponent = () => {
-  const navigation = useNavigation();
   return (
     <HomeContainer>
       <AlignCenter>
-        <BigText>Instapet</BigText>
-        <ImageComponent source={imageWelcome } />
-        <SmallText textStyles={{ marginBottom: 10, alignItems:"center"}}>
-          A rede social do seu bichinho 
-          <MaterialIcons name="pets" size={24} color="black" />
-        </SmallText>
-       
+        <BigText >Instapet</BigText>
       </AlignCenter>
-      <Input label={"Email"} placeholder={"adalovelace@email.com"} />
-      <Input label={"Senha"} placeholder={"*******"} >
+      <AlignCenter>
+        <ContainerImage styles={{backgroundColor:"#AE78EF9f"}}/>
+        <SmallText textStyles={{ marginBottom: 10, alignItems:"center"}}>
+        *Foto de Perfil
+        </SmallText>
+      </AlignCenter>
+      <Input label={"*Nome"} placeholder={"Ada Lovelace"} />
+     
+      <Input label={"*Email"} placeholder={"adalovelace@email.com"} />
+      <Input label={"*Senha"} placeholder={"*******"} >
         <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
       </Input>
-      <Button styles={{ marginTop: 20 }} onPress={() => navigation.navigate('Home')}>
+      <Input label={"*Repetir senha"} placeholder={"*******"} >
+        <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+      </Input>
+      
+      <Button styles={{ marginTop: 20 }} onPress={() => navigation.navigate("Login")}>
         <AntDesign name="check" size={24} color="white" />
         <SmallText
           textStyles={{
@@ -72,20 +81,11 @@ const Login: FunctionComponent = () => {
             marginHorizontal: 4,
           }}
         >
-          Entrar
+          Cadastrar
         </SmallText>
-      </Button>
-      <ContainerSection>
-        <Divider></Divider>
-        <ContainerLabel>
-          <SmallText>Ou</SmallText>
-        </ContainerLabel>
-      </ContainerSection>
-      <Button styles={{ marginTop: 20, backgroundColor: "white", borderWidth:1, borderColor:" rgba(200, 200, 200, 0.25)"}}  onPress={() => navigation.navigate("Register")}>
-        <SmallText textStyles={{ fontWeight: "bold" }}>Cadastrar</SmallText>
       </Button>
     </HomeContainer>
   );
 };
 
-export default Login;
+export default Register;

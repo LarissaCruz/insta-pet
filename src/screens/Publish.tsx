@@ -8,6 +8,7 @@ import Input from "../components/Inputs/Input";
 import SmallText from "../components/Texts/SmallText";
 import Button from "../components/Button/Button";
 import { AlignCenter } from "../components/shared";
+
 const PublishContainer = styled(Container)`
   background-color: ${colors.white};
   width: 100%;
@@ -43,7 +44,9 @@ const Publish: FunctionComponent = () => {
         0 de 100 utilizadas
       </SmallText>
 
-      <Button>
+      <Button onPress={function (): void {
+        throw new Error("Function not implemented.");
+       } }>
         <AntDesign name="check" size={24} color="white" />
         <SmallText textStyles={{ color: "white", marginHorizontal: 4 }}>
           Postar

@@ -7,6 +7,7 @@ import { colors } from "../colors";
 interface ButtonProps {
   children?: ReactNode;
   styles?: StyleProp<ViewStyle>;
+  onPress(): void
 }
 const Container = styled.TouchableOpacity`
   flex-direction: row;
@@ -20,6 +21,6 @@ const Container = styled.TouchableOpacity`
 `;
 
 const Button: FunctionComponent<ButtonProps> = (props) => {
-  return <Container style={props.styles}>{props.children}</Container>;
+  return <Container onPress={props.onPress} style={props.styles}>{props.children}</Container>;
 };
 export default Button;

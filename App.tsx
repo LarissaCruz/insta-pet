@@ -1,6 +1,6 @@
 import { useFonts } from "expo-font";
-import AuthStackNavigator from "./src/navigatiors/AuthStackNavigator";
-import MainStackNavigator from "./src/navigatiors/MainStackNavigator";
+import AuthStackNavigator from "./src/navigatior/AuthStackNavigator";
+import MainStackNavigator from "./src/navigatior/MainStackNavigator";
 
 
 export default function App() {
@@ -12,5 +12,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return <AuthStackNavigator />;
+  return (false?<AuthStackNavigator />:<MainStackNavigator/>);
 }
