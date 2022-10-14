@@ -17,18 +17,10 @@ const HomeContainer = styled(Container)`
   background-color: ${colors.white};
   width: 100%;
 `;
+
 const Contact: FunctionComponent = () => {
   return (
     <HomeContainer>
-      <SpaceBetween>
-        <RegularText textStyles={{ fontSize: 24 }}>Perfil</RegularText>
-        <Button styles={{ padding: 8 }}>
-          <MaterialIcons name="edit" size={14} color="white" />
-          <SmallText textStyles={{ color: "white", fontSize: 12 }}>
-            Editar perfil
-          </SmallText>
-        </Button>
-      </SpaceBetween>
       <AlignCenter>
         <Avatar styles={{ width: 80, height: 80, borderRadius: 50 }} />
         <SmallText>Carlos Eduardo França</SmallText>
@@ -45,6 +37,7 @@ const Contact: FunctionComponent = () => {
         renderItem={({ item, index }) => {
           return <Card />;
         }}
+       
       />
     </HomeContainer>
   );

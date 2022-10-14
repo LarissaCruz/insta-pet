@@ -39,11 +39,11 @@ const Card: FunctionComponent<CardProps> = (props) => {
     <Container>
       <ContainerChip>
         <Chip label={"Larissa"} />
-        <SmallText StyledText={{fontSize:8}}>1/08/2022</SmallText>
+        <SmallText textStyles={{fontSize:12, color:'#8F8F8F'}}>1/08/2022</SmallText>
       </ContainerChip>
 
       <Image source={image} />
-      <SmallText>
+      <SmallText >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum
         faucibus laoreet.
       </SmallText>

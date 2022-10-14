@@ -10,8 +10,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import imageWelcome from "../assets/image/imageWelcome.png";
 import Input from "../components/Inputs/Input";
 import { AntDesign } from "@expo/vector-icons";
-import {StackNavigationProp} from '@react-navigation/stack';
-import {AuthStackParamList} from "../navigatior/AuthStackNavigator"
 import {useNavigation} from '@react-navigation/native';
 
 const HomeContainer = styled(Container)`
@@ -43,8 +41,6 @@ const ContainerLabel = styled.View`
   background-color: ${colors.white};
   padding: 16px;
 `;
-
-
 
 const Login: FunctionComponent = () => {
   const navigation = useNavigation();
