@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native'
-import TodoProvider from '../context/Auth';
+
 
 
 import AppRoutes from '../routers/app.router';
@@ -17,7 +17,7 @@ function Routes() {
            // </View>
        // );
     //}
-    return ( <TodoProvider><AppRoutes /> </TodoProvider>;
+    return ( <AppRoutes /> );
 }
 
 export default Routes;
