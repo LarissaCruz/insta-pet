@@ -1,6 +1,6 @@
 import { useFonts } from "expo-font";
-import AuthStackNavigator from "./src/navigatior/AuthStackNavigator";
-import MainStackNavigator from "./src/navigatior/MainStackNavigator";
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "./src/routers";
 
 
 export default function App() {
@@ -12,5 +12,11 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return (false?<AuthStackNavigator />:<MainStackNavigator/>);
+  return (
+    <NavigationContainer>
+    
+      <Routes/>
+   
+  </NavigationContainer>
+  );
 }

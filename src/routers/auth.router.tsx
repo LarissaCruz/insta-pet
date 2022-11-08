@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Login from "../screens/Login";
-import { NavigationContainer } from "@react-navigation/native";
-import Register from "../screens/Register";
+import Login from "../screens/Login/index"
+
+import Register from "../screens/Register/index"
 
 export type AuthStackParamList = {
   Register: undefined;
@@ -13,9 +13,9 @@ export type AuthStackParamList = {
 
 const Stack = createStackNavigator<AuthStackParamList>();
 
-const AuthStackNavigator: FunctionComponent = () => {
+const AuthRouter: FunctionComponent = () => {
   return (
-    <NavigationContainer>
+
         <Stack.Navigator>
           <Stack.Screen
               name="Login"
@@ -32,8 +32,8 @@ const AuthStackNavigator: FunctionComponent = () => {
               }}
           />
         </Stack.Navigator>
-    </NavigationContainer>
+ 
   );
 };
 
-export default AuthStackNavigator;
+export default AuthRouter;

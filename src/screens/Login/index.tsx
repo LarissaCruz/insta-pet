@@ -1,49 +1,32 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components/native";
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
-import SmallText from "../components/Texts/SmallText";
-import BigText from "../components/Texts/BigText";
-import Button from "../components/Button/Button";
-import { AlignCenter } from "../components/shared";
-import { MaterialIcons } from "@expo/vector-icons";
-import imageWelcome from "../assets/image/imageWelcome.png";
-import Input from "../components/Inputs/Input";
-import { AntDesign } from "@expo/vector-icons";
 import {useNavigation} from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
 
-const HomeContainer = styled(Container)`
-  background-color: ${colors.white};
-  padding: 16px;
-`;
+import { AntDesign } from "@expo/vector-icons";
+import { AlignCenter } from "../../components/shared";
+import { MaterialIcons } from "@expo/vector-icons";
+import { colors } from "../../components/colors";
+import SmallText from "../../components/Texts/SmallText";
+import BigText from "../../components/Texts/BigText";
+import Button from "../../components/Button/Button";
+import Input from "../../components/Inputs/Input";
+import {HomeContainer, ImageComponent, ContainerSection, Divider, ContainerLabel} from './styles'
 
-const ImageComponent = styled.Image`
-  width: 194px;
-  heigth: 194px;
-  margin-top: 40px;
-`;
+import imageWelcome from "../../assets/image/imageWelcome.png";
 
-const ContainerSection = styled.View`
-  height: 50px;
-  margin-top: 20px;
-  justify-content: center; 
-  align-items: center; 
-`;
-
-const Divider = styled.View`
-  background-color:${colors.lightGray}; 
-  position: absolute; 
-  width: 100%; 
-  height: 1px;
-`;
-
-const ContainerLabel = styled.View`
-  background-color: ${colors.white};
-  padding: 16px;
-`;
+export interface authUserDataType {
+  email: string;
+  senha: string;
+}
 
 const Login: FunctionComponent = () => {
   const navigation = useNavigation();
+
+  const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
+
+  const onSubmit = async (data: authUserDataType) => {
+    console.log('teste')
+  };
   return (
     <HomeContainer>
       <AlignCenter>
@@ -55,11 +38,11 @@ const Login: FunctionComponent = () => {
         </SmallText>
        
       </AlignCenter>
-      <Input label={"Email"} placeholder={"adalovelace@email.com"} />
-      <Input label={"Senha"} placeholder={"*******"} >
+      <Input label={"Email"} placeholder={"adalovelace@email.com"} control={control} errors={errors} name={"email"} />
+      <Input label={"Senha"} placeholder={"*******"} control={control} errors={errors} name={"senha"}>
         <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
       </Input>
-      <Button styles={{ marginTop: 20 }} onPress={() => navigation.navigate('Home')}>
+      <Button styles={{ marginTop: 20 }} onPress={handleSubmit(onSubmit)}>
         <AntDesign name="check" size={24} color="white" />
         <SmallText
           textStyles={{
@@ -72,7 +55,7 @@ const Login: FunctionComponent = () => {
         </SmallText>
       </Button>
       <ContainerSection>
-        <Divider></Divider>
+        <Divider/>
         <ContainerLabel>
           <SmallText>Ou</SmallText>
         </ContainerLabel>

@@ -1,27 +1,12 @@
 import React, { FunctionComponent } from "react";
 import { StatusBar } from "expo-status-bar";
-import styled from "styled-components/native";
-import { AntDesign } from "@expo/vector-icons";
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
-import Input from "../components/Inputs/Input";
-import SmallText from "../components/Texts/SmallText";
-import Button from "../components/Button/Button";
-import { AlignCenter } from "../components/shared";
 
-const PublishContainer = styled(Container)`
-  background-color: ${colors.white};
-  width: 100%;
-  padding: 0px 14px;
-`;
-const ContainerImage = styled.View`
-  width: 156px;
-  height: 156px;
-  background: ${colors.secondary};
-  justify-content: center;
-  border-radius: 8px;
-  align-items: center;
-`;
+import { AntDesign } from "@expo/vector-icons";
+import Input from "../../components/Inputs/Input";
+import SmallText from "../../components/Texts/SmallText";
+import Button from "../../components/Button/Button";
+import { AlignCenter } from "../../components/shared";
+import {PublishContainer, ContainerImage} from './styles'
 
 const Publish: FunctionComponent = () => {
   return (

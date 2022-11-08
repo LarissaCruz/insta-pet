@@ -1,23 +1,24 @@
 import React, { FunctionComponent } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { colors } from "../components/colors";
-import BigText from "../components/Texts/BigText";
+import { colors } from "../../components/colors";
+import BigText from "../../components/Texts/BigText";
 import styled from "styled-components/native";
 import { MaterialIcons, Octicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { View } from "react-native";
-import Publish from "../screens/Publish";
-import Contact from "../screens/Contact";
-import Home from "../screens/Home";
-import SmallText from "../components/Texts/SmallText";
-import RegularText from "../components/Texts/RegularText";
-import Button from "../components/Button/Button";
+import Publish from "../../screens/Publish/index";
+import Contact from "../../screens/Contact/index";
+import Home from "../../screens/Home/index";
+import SmallText from "../../components/Texts/SmallText";
+import RegularText from "../../components/Texts/RegularText";
+import Button from "../../components/Button/Button";
 
 export type RootStackParamList = {
   Home: any;
   Circles: any;
   Contacts: any;
+  Perfil:"any";
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -91,7 +92,9 @@ const TabNavigation: FunctionComponent = () => {
           options={{
             headerTitle: (props) => <RegularText textStyles={{ fontSize: 24 }}>Seu Perfil</RegularText>,
             headerRight: () => (
-              <Button styles={{ paddingTop:8 , paddingBottom:8, marginRight:10}}>
+              <Button styles={{ paddingTop: 8, paddingBottom: 8, marginRight: 10 }} onPress={function (): void {
+                throw new Error("Function not implemented.");
+              } }>
                 <MaterialIcons name="edit" size={14} color="white" />
                 <SmallText textStyles={{ color: "white", fontSize: 12 }}>
                   Editar perfil

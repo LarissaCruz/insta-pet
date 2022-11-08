@@ -1,5 +1,5 @@
-import {AuthStackParamList} from "../navigatior/AuthStackNavigator"
-import {RootStackParamList} from "../navigatior/TabNavigation"
+import {AuthStackParamList} from "../routers/auth.router"
+import {RootStackParamList} from "../routers/TabBar"
 type AppRootStack =  AuthStackParamList & RootStackParamList
 
 declare global {

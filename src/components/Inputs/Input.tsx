@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from "react";
+import { useForm, Controller } from 'react-hook-form';
+
 import styled from "styled-components/native";
 import { ReactNode } from "react";
 import { StyleProp, ViewStyle } from "react-native";
@@ -11,6 +13,9 @@ interface InputProps {
   multiline?: boolean;
   label: string;
   placeholder: string;
+  control: any;
+  errors: any;
+  name: string;
 }
 const Container = styled.View`
   flex-direction: row;
@@ -28,17 +33,26 @@ const ContainerInput = styled.TextInput`
   
 `;
 
-const Input: FunctionComponent<InputProps> = (props) => {
+const Input: FunctionComponent<InputProps> = ({children,InputStyles,multiline,label,placeholder, control, errors, name}) => {
   return (
     <>
-      <SmallText textStyles={{ marginVertical: 8 }}>{props.label}</SmallText>
+      <SmallText textStyles={{ marginVertical: 8 }}>{label}</SmallText>
       <Container >
-        <ContainerInput
-          multiline={props.multiline}
-          numberOfLines={props.multiline ? 6 : 1}
-          placeholder={props.placeholder}
+        <Controller
+          control={control}
+          render={({field: { onChange, onBlur, value }}) => (
+            <ContainerInput
+              multiline={multiline}
+              numberOfLines={multiline ? 6 : 1}
+              placeholder={placeholder}
+              onChangeText={(value: string) => onChange(value)}
+              value={value}
+            />
+          )}
+          name={name}
+          rules={{ required: true }}
         />
-        {props.children}
+        {children}
       </Container>
     </>
   );
