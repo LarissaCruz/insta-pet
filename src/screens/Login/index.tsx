@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext, useState } from "react";
 import {useNavigation} from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-
+import { AuthContext } from "../../contexts/AuthContext";
 import { AntDesign } from "@expo/vector-icons";
 import { AlignCenter } from "../../components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -13,6 +13,8 @@ import Input from "../../components/Inputs/Input";
 import {HomeContainer, ImageComponent, ContainerSection, Divider, ContainerLabel} from './styles'
 
 import imageWelcome from "../../assets/image/imageWelcome.png";
+import { Keyboard, Alert } from "react-native";
+import { Loading } from "../../components/Loading";
 
 export interface authUserDataType {
   email: string;
@@ -21,11 +23,22 @@ export interface authUserDataType {
 
 const Login: FunctionComponent = () => {
   const navigation = useNavigation();
-
+  const [loading, setLoading] = useState(false);
+  const { login } = useContext(AuthContext);
   const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
+  const ShowAlert = (title, message, handlerOnPress) =>{
+    Alert.alert(title, message, [{ text: "OK", onPress: handlerOnPress }]);
+  }
 
   const onSubmit = async (data: authUserDataType) => {
-    console.log('teste')
+    try {
+      Keyboard.dismiss();
+      setLoading(true);
+      await login(data.email, data.senha);
+    } catch (e) {
+      setLoading(false);
+      ShowAlert("Erro", e.message);
+    }
   };
   return (
     <HomeContainer>
@@ -63,6 +76,7 @@ const Login: FunctionComponent = () => {
       <Button styles={{ marginTop: 20, backgroundColor: "white", borderWidth:1, borderColor:" rgba(200, 200, 200, 0.25)"}}  onPress={() => navigation.navigate("Register")}>
         <SmallText textStyles={{ fontWeight: "bold" }}>Cadastrar</SmallText>
       </Button>
+      <Loading loading={loading} />
     </HomeContainer>
   );
 };

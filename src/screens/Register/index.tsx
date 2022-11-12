@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState,useContext } from "react";
 import { useForm } from 'react-hook-form';
 
 import { useNavigation } from '@react-navigation/native';
@@ -16,7 +16,9 @@ import { AlignCenter } from "../../components/shared";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { HomeContainer } from './styles'
-
+import { Alert, Keyboard } from "react-native";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Loading } from "../../components/Loading";
 
 type AuthScreenProp = StackNavigationProp<AuthStackParamList, 'Login', 'Register'>;
 
@@ -29,11 +31,28 @@ export interface userDataType {
 
 const Register: FunctionComponent = () => {
   const navigation = useNavigation<AuthScreenProp>();
-
-  const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
+  const { register } = useContext(AuthContext);
+  const {setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
   
-  const onSubmit = (data: userDataType) => {
-    console.log(data);
+  const ShowAlert = (title, message, handlerOnPress) =>{
+    Alert.alert(title, message, [{ text: "OK", onPress: handlerOnPress }]);
+  }
+  
+  const onSubmit = async (data: userDataType) => {
+    console.log("")
+    try {
+      Keyboard.dismiss();
+      setLoading(true);
+      await register(data.email, data.senha);
+      setLoading(false);
+      ShowAlert("Sucesso", "Seu cadastro foi realizado com sucesso", () =>
+      navigation.navigate("Login")
+      );
+    } catch (e) {
+      setLoading(false);
+      console.log("errrrrrrrooooooooooooooo", e);
+    }
   };
   return (
     <HomeContainer>
@@ -68,6 +87,7 @@ const Register: FunctionComponent = () => {
           Cadastrar
         </SmallText>
       </Button>
+      <Loading loading={loading} />
     </HomeContainer>
   );
 };

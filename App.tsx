@@ -9,14 +9,13 @@ export default function App() {
     "Pacifico-Regular": require("./src/assets/fonts/Pacifico-Regular.ttf"),
   });
 
-  if (!fontsLoaded) {
-    return null;
-  }
-  return (
-    <NavigationContainer>
-    
-      <Routes/>
+  if (!!fontsLoaded) {
+    return (
+      <NavigationContainer>
+        <Routes/>
+    </NavigationContainer>
+    );
    
-  </NavigationContainer>
-  );
+  }
+  return null;
 }
