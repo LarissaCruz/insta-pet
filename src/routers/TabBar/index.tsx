@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { colors } from "../../components/colors";
 import BigText from "../../components/Texts/BigText";
@@ -13,6 +13,7 @@ import Home from "../../screens/Home/index";
 import SmallText from "../../components/Texts/SmallText";
 import RegularText from "../../components/Texts/RegularText";
 import Button from "../../components/Button/Button";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export type RootStackParamList = {
   Home: any;
@@ -37,6 +38,17 @@ const IconTabRound = styled.View`
 `;
 
 const TabNavigation: FunctionComponent = () => {
+   const { logout } = useContext(AuthContext);
+
+  const onLogout = async () => {
+    try {
+      await logout();
+    } catch (e) {
+     console.log("erro logout")
+     
+    }
+  };
+
   return (
       <Tab.Navigator
        screenOptions={{
@@ -92,12 +104,10 @@ const TabNavigation: FunctionComponent = () => {
           options={{
             headerTitle: (props) => <RegularText textStyles={{ fontSize: 24 }}>Seu Perfil</RegularText>,
             headerRight: () => (
-              <Button styles={{ paddingTop: 8, paddingBottom: 8, marginRight: 10 }} onPress={function (): void {
-                throw new Error("Function not implemented.");
-              } }>
-                <MaterialIcons name="edit" size={14} color="white" />
-                <SmallText textStyles={{ color: "white", fontSize: 12 }}>
-                  Editar perfil
+              <Button styles={{ paddingTop: 8, paddingBottom: 8, backgroundColor:'#fff', marginRight:15}} onPress={() => onLogout()}>
+                <MaterialIcons name="logout" size={14}  style={{marginLeft:20, marginRight:5, }}/>
+                <SmallText textStyles={{   fontSize: 12 , fontWeight:"bold", marginRight:20}}>
+                  Sair
                 </SmallText>
             </Button>
             ),

@@ -7,16 +7,25 @@ import { AlignCenter} from "../../components/shared";
 import Card from "../../components/Card/Card";
 import SmallText from "../../components/Texts/SmallText";
 import Avatar from "../../components/Avatar/Avatar";
+import Button from "../../components/Button/Button";
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 
 const Contact: FunctionComponent = () => {
+
   return (
     <HomeContainer>
       <AlignCenter>
         <Avatar styles={{ width: 80, height: 80, borderRadius: 50 }} />
         <SmallText>Carlos Eduardo França</SmallText>
-        <SmallText>edu_franca</SmallText>
+        <SmallText textStyles={{ fontSize: 12, }}>edu_franca</SmallText>
+        <Button styles={{ paddingTop: 8, paddingBottom: 8, marginVertical:15}} >
+            <MaterialIcons name="edit" size={14} color="white" />
+            <SmallText textStyles={{ marginLeft:5, color: "white", fontSize: 12, }}>
+              Editar perfil
+            </SmallText>
+        </Button>
       </AlignCenter>
       <FlatList
         data={[
