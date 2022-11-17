@@ -15,7 +15,7 @@ const Publish: FunctionComponent = () => {
     <PublishContainer>
       <StatusBar />
       <AlignCenter>
-        <ContainerImage/>
+        <ContainerImage />
       
         <SmallText textStyles={{ marginVertical: 8 }}>
           Foto do bichinho

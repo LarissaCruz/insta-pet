@@ -19,6 +19,7 @@ import { HomeContainer } from './styles'
 import { Alert, Keyboard } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Loading } from "../../components/Loading";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 type AuthScreenProp = StackNavigationProp<AuthStackParamList, 'Login', 'Register'>;
 
@@ -32,6 +33,7 @@ export interface userDataType {
 const Register: FunctionComponent = () => {
   const navigation = useNavigation<AuthScreenProp>();
   const [loading, setLoading] = useState(false);
+   const [visibilit, setVisibilit] = useState(true);
   const { register } = useContext(AuthContext);
   const {setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
   
@@ -68,11 +70,16 @@ const Register: FunctionComponent = () => {
       <Input label={"*Nome"} placeholder={"Ada Lovelace"} control={control} errors={errors} name={"nome"} />
      
       <Input label={"*Email"} placeholder={"adalovelace@email.com"} control={control} errors={errors} name={"email"} />
-      <Input label={"*Senha"} placeholder={"*******"}  control={control} errors={errors} name={"senha"} >
-        <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+      <Input label={"*Senha"} placeholder={"*******"} secureTextEntry={visibilit} control={control} errors={errors} name={"senha"} >
+        <TouchableOpacity onPress={()=>setVisibilit(!visibilit)}>
+          <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        </TouchableOpacity>
       </Input>
-      <Input label={"*Repetir senha"} placeholder={"*******"} control={control} errors={errors} name={"confirmarSenha"}  >
-        <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+      <Input label={"*Repetir senha"} placeholder={"*******"} secureTextEntry={visibilit} control={control} errors={errors} name={"confirmarSenha"}  >
+         <TouchableOpacity onPress={()=>setVisibilit(!visibilit)}>
+           <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+         </TouchableOpacity>
+       
       </Input>
       
       <Button styles={{ marginTop: 20 }}  onPress={handleSubmit(onSubmit)}>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useForm } from 'react-hook-form';
 import Input from "../../components/Inputs/Input";
@@ -11,8 +11,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Container } from './styles'
 import ContainerImage from "../../components/ContainerImage/ContainerImage";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const EditProfile: FunctionComponent = () => {
+    const [visibilit, setVisibilit] = useState(true);
    const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
   return (
     <Container>
@@ -29,18 +31,25 @@ const EditProfile: FunctionComponent = () => {
         control={control} errors={errors} name={"name"} 
       />
       <Input
+        secureTextEntry={visibilit}
         label={"*Senha"}
         placeholder={"*******"}
         control={control} errors={errors} name={"password"} 
       >
-          <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        <TouchableOpacity onPress={()=>setVisibilit(!visibilit)}>
+           <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        </TouchableOpacity>
+          
       </Input> 
       <Input
         label={"**Repetir senha"}
+        secureTextEntry={visibilit}
         placeholder={"*******"}
         control={control} errors={errors} name={"confirmpassword"} 
       >
-        <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        <TouchableOpacity onPress={()=>setVisibilit(!visibilit)}>
+           <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        </TouchableOpacity>
       </Input>
     
 

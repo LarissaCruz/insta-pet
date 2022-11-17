@@ -15,6 +15,7 @@ import {HomeContainer, ImageComponent, ContainerSection, Divider, ContainerLabel
 import imageWelcome from "../../assets/image/imageWelcome.png";
 import { Keyboard, Alert } from "react-native";
 import { Loading } from "../../components/Loading";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export interface authUserDataType {
   email: string;
@@ -24,6 +25,7 @@ export interface authUserDataType {
 const Login: FunctionComponent = () => {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+  const [visibilit, setVisibilit] = useState(true);
   const { login } = useContext(AuthContext);
   const { register, setValue, handleSubmit, control, reset, formState: { errors } } = useForm();
   const ShowAlert = (title, message, handlerOnPress) =>{
@@ -52,8 +54,10 @@ const Login: FunctionComponent = () => {
        
       </AlignCenter>
       <Input label={"Email"} placeholder={"adalovelace@email.com"} control={control} errors={errors} name={"email"} />
-      <Input label={"Senha"} placeholder={"*******"} control={control} errors={errors} name={"senha"}>
-        <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+      <Input label={"Senha"} placeholder={"*******"} secureTextEntry={visibilit} control={control} errors={errors} name={"senha"}>
+        <TouchableOpacity onPress={()=>setVisibilit(!visibilit)}>
+          <MaterialIcons name="visibility" size={24} color={colors.lightPurple} />
+        </TouchableOpacity>
       </Input>
       <Button styles={{ marginTop: 20 }} onPress={handleSubmit(onSubmit)}>
         <AntDesign name="check" size={24} color="white" />

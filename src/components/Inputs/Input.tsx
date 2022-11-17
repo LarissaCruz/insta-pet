@@ -11,6 +11,7 @@ interface InputProps {
   children?: ReactNode;
   InputStyles?: StyleProp<ViewStyle>;
   multiline?: boolean;
+  secureTextEntry?:boolean;
   label: string;
   placeholder: string;
   control: any;
@@ -28,12 +29,16 @@ const Container = styled.View`
   border: 1px solid #353535;
   border-radius: 8px;
   gap: 10px;
+ 
 `;
 const ContainerInput = styled.TextInput`
+   width:290px;
   
+   
+
 `;
 
-const Input: FunctionComponent<InputProps> = ({children,InputStyles,multiline,label,placeholder, control, errors, name}) => {
+const Input: FunctionComponent<InputProps> = ({children,InputStyles,multiline,label,placeholder, control, errors, name, secureTextEntry}) => {
   return (
     <>
       <SmallText textStyles={{ marginVertical: 8 }}>{label}</SmallText>
@@ -43,6 +48,7 @@ const Input: FunctionComponent<InputProps> = ({children,InputStyles,multiline,la
           render={({field: { onChange, onBlur, value }}) => (
             <ContainerInput
               multiline={multiline}
+              secureTextEntry={secureTextEntry}
               numberOfLines={multiline ? 6 : 1}
               placeholder={placeholder}
               onChangeText={(value: string) => onChange(value)}
